@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 <title>Bulls & Cows</title>
 </head>
 <body>
-  <header></header>
-  <section>
-  1, 2, 3, 4
-  </section>
-  <footer></footer>
+	<div id="container">
+		<div class="turn">
+			<div id="nugget0" class="button n"></div>
+			<div id="nugget1" class="button n"></div>
+			<div id="nugget2" class="button n"></div>
+			<div id="nugget3" class="button n"></div>
+		</div>
+	</div>
+
+	<script language="javascript">
+
+			var colors = ["r", "o", "y", "g", "b", "p"];
+			
+			var secretCode = [];
+			
+			for (i=0; i<=3; i++) {
+				secretCode.push(colors[Math.floor(Math.random() * 6)]);
+			}
+			
+			console.log(secretCode);
+
+			var color = 0;
+				document.getElementById('nugget0').addEventListener('click', function cycleColor() {
+					color = colors.indexOf(document.getElementById('nugget0').className);
+					color ++;
+					if (color == 6) {
+						color = 0
+					}
+					document.getElementById('nugget0').className = colors[color];
+				});
+			
+			</script>
 </body
 </html>

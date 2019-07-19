@@ -1,0 +1,39 @@
+.n {
+	background-color: black;
+}
+
+.r {
+	background-color: red;
+}
+
+.o {
+	background-color: orange;
+}
+
+.y {
+	background-color: yellow;
+}
+
+.g {
+	background-color: green;
+}
+
+.b {
+	background-color: blue;
+}
+
+.p {
+	background-color: purple;
+}
+
+.turn div {
+	width: 100px;
+	height: 100px;
+	border-radius: 10px;
+	margin:10px;
+	display: inline-block;
+}
+
+body {
+	text-align: center;
+}
