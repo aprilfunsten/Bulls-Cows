@@ -5,13 +5,15 @@
 <title>Bulls & Cows</title>
 </head>
 <body>
-	<div id="container">
+	<div class="container">
 		<div class="turn">
-			<div id="nugget0" class="button n"></div>
-			<div id="nugget1" class="button n"></div>
-			<div id="nugget2" class="button n"></div>
-			<div id="nugget3" class="button n"></div>
+			<div id="nugget0" class="n" onClick="advanceColor(0);"></div>
+			<div id="nugget1" class="n" onClick="advanceColor(1);"></div>
+			<div id="nugget2" class="n" onClick="advanceColor(2);"></div>
+			<div id="nugget3" class="n" onClick="advanceColor(3);"></div>
+			<div id="log"></div>
 		</div>
+		<input type="button" id="check" value="Check" onClick="check();">
 	</div>
 
 	<script language="javascript">
@@ -27,14 +29,50 @@
 			console.log(secretCode);
 
 			var color = 0;
-				document.getElementById('nugget0').addEventListener('click', function cycleColor() {
-					color = colors.indexOf(document.getElementById('nugget0').className);
-					color ++;
-					if (color == 6) {
-						color = 0
+
+			function advanceColor(nugget){
+				color = colors.indexOf(document.getElementById('nugget' + nugget).className);
+				color ++;
+				color == colors.length ? color = 0 : color;
+				document.getElementById('nugget' + nugget).className = colors[color];
+			}
+
+			var log = document.getElementById('log');
+
+			function check() {
+				var cows = 0;
+				var bulls = 0;
+				var positions = [];
+				var pos0 = document.getElementById('nugget0').className;
+				positions.push(pos0);
+				var pos1 = document.getElementById('nugget1').className;
+				positions.push(pos1);
+				var pos2 = document.getElementById('nugget2').className;
+				positions.push(pos2);
+				var pos3 = document.getElementById('nugget3').className;
+				positions.push(pos3);
+				console.log(positions);
+				for (i=0;i<4;i++){
+					if (document.getElementById('nugget' + i).className == secretCode[i]){
+						bulls ++;
 					}
-					document.getElementById('nugget0').className = colors[color];
-				});
+				}
+				if (positions.indexOf(secretCode[0]) != -1){
+					cows ++;
+				}
+				if (positions.indexOf(secretCode[1]) != -1){
+					cows ++;
+				}
+				if (positions.indexOf(secretCode[2]) != -1){
+					cows ++;
+				}
+				if (positions.indexOf(secretCode[3]) != -1){
+					cows ++;
+				}
+				console.log(secretCode.indexOf(pos0));
+
+				document.getElementById('log').innerHTML=cows + ' cows, <br />' + bulls + ' bulls';
+			}
 			
 			</script>
 </body
